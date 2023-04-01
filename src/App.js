@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import { getImageUrl } from './Components/utlis';
+import { people } from './Components/data';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  // const chemist=people.filter(person=>person.profession==='chemist');
+  const listitems=people.map(person=>
+    
+    <li key={person.id}>
+       <img
+        src={getImageUrl(person)}
+        alt={person.name}
+      />
+     <p>
+    
+     <b>{person.name}:</b>
+     {' ' + person.profession + ' '}
+     known for {person.accomplishment}
+   </p>
+   </li>
+   
+    );
+    return <ul>{listitems}</ul>;
+ 
 }
 
 export default App;
